@@ -158,10 +158,7 @@ def requires_b2c_auth(f):
     return decorated
 
 def __decode_B2C_JWT(token_version, token, rsa_key):
-    if token_version == "1.0":
-        _issuer = f'https://{b2c_domain_name}.b2clogin.com/tfp/{tenant_id}/{b2c_policy_name}/v2.0/'.lower()
-    else:
-        _issuer = f'https://{b2c_domain_name}.b2clogin.com/{tenant_id}/v2.0'.lower()
+    _issuer = f'https://{b2c_domain_name}.b2clogin.com/{tenant_id}/v2.0/'.lower()
     try:
         payload = jwt.decode(
             token,
